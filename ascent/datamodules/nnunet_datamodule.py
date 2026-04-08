@@ -137,7 +137,7 @@ class nnUNetDataModule(LightningDataModule):
                     splits[-1]["val"] = val_keys
                     splits[-1]["test"] = test_keys
             else:
-                kfold = KFold(n_splits=5, shuffle=True, random_state=12345)
+                kfold = KFold(n_splits=10, shuffle=True, random_state=12345)
                 for i, (train_idx, val_idx) in enumerate(kfold.split(all_keys_sorted)):
                     train_keys = np.array(all_keys_sorted)[train_idx]
                     val_keys = np.array(all_keys_sorted)[val_idx]

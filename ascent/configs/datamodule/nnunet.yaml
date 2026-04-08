@@ -14,7 +14,7 @@ do_dummy_2D_data_aug: ???
 fold: ${fold}
 num_workers: 12
 pin_memory: True
-test_splits: True
+test_splits: False
 seg_label: True
 data_keys:
   image_key: "image"
