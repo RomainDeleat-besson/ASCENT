@@ -151,6 +151,7 @@ dependencies = [
     "numpy>=2.2.6",
     "onnx==1.16.1",
     "onnxruntime>=1.23.2",
+    "opencv-python==4.11.0.86",
     "pandas>=2.3.3",
     "pyrootutils>=1.0.4",
     "rich>=14.3.3",
