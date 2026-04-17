@@ -1,0 +1,13 @@
+# path to data directory
+data_dir: "/home/deleat/Documents/RomainD/Working_space/Data/Data_LLDM_v2/_dataset_v2_synth"
+
+# path to logging directory
+log_dir: "/home/deleat/Documents/RomainD/Working_space/Figures_Resultats/Results_LLDM_v2/_experiences/dice_synth_img/"
+
+# path to output directory, created dynamically by hydra
+# path generation pattern is specified in `configs/hydra/default.yaml`
+# use it to store all files generated during the run, like ckpts and metrics
+output_dir: ${hydra:runtime.output_dir}
+
+# path to working directory
+work_dir: ${hydra:runtime.cwd}
