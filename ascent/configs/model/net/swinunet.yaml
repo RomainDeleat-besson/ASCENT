@@ -1,0 +1,16 @@
+_target_: ascent.models.components.swinUnet.SwinTransformerSys
+img_size: 128
+patch_size_: 4
+in_channels: 1
+num_classes: 4
+embedding_dim: 96
+depths: [2, 2, 2, 2]
+depths_decoder: [1, 2, 2, 2]
+num_heads: [3, 6, 12, 24]
+window_size: 8
+mlp_ratio: 4.0
+qkv_bias: True
+drop_rate: 0.0
+attn_drop_rate: 0.0
+drop_path_rate: 0.1
+final_upsample: "expand_first"

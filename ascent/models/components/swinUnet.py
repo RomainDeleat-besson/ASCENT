@@ -740,7 +740,7 @@ class SwinTransformerSys(nn.Module):
     def __init__(
         self,
         img_size=224,
-        patch_size=4,
+        patch_size_=4,
         in_channels=3,
         num_classes=1000,
         embedding_dim=96,
@@ -768,6 +768,10 @@ class SwinTransformerSys(nn.Module):
                 depths, depths_decoder, drop_path_rate, num_classes
             )
         )
+        
+        self.patch_size = [img_size, img_size]
+        self.in_channels = in_channels
+        self.deep_supervision = False
 
         self.num_classes = num_classes
         self.num_layers = len(depths)
@@ -782,7 +786,7 @@ class SwinTransformerSys(nn.Module):
         # split image into non-overlapping patches
         self.patch_embed = PatchEmbed(
             img_size=img_size,
-            patch_size=patch_size,
+            patch_size=patch_size_,
             in_channels=in_channels,
             embedding_dim=embedding_dim,
             norm_layer=norm_layer if self.patch_norm else None,
@@ -882,7 +886,7 @@ class SwinTransformerSys(nn.Module):
         if self.final_upsample == "expand_first":
             print("---final upsample expand_first---")
             self.up = FinalPatchExpand_X4(
-                input_resolution=(img_size[0] // patch_size, img_size[1] // patch_size),
+                input_resolution=(img_size // patch_size_, img_size // patch_size_),
                 dim_scale=4,
                 dim=embedding_dim,
             )

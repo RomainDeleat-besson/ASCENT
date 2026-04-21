@@ -1,0 +1,13 @@
+defaults:
+  - net: swinunet
+  - optimizer: sgd
+  - scheduler: polylr
+  - scheduler_config: default
+  - loss: dice_ce
+
+_target_: ascent.models.swinunet_module.SwinUNetLitModule
+
+tta: True
+save_predictions: True
+save_npz: False
+name: SwinUNet
