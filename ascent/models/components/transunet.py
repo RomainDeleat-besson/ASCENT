@@ -1014,7 +1014,7 @@ class VisionTransformer(nn.Module):
         img_size=(224, 224),
         in_channels=3,
         num_classes=4,
-        patch_size=16,
+        patch_size_=16,
         patches_grid=(16, 16),
         hidden_size=768,
         resnet_num_layers=(3, 4, 9),
@@ -1032,19 +1032,26 @@ class VisionTransformer(nn.Module):
         zero_head=False,
         vis=False,
         pretrained_path="../pretrained/R50+ViT-B_16.npz",
+        **kwargs,
     ):
         super().__init__()
+
+        self.patch_size = img_size
+        self.in_channels = in_channels
+        self.deep_supervision = False
+
+
         self.num_classes = num_classes
         self.zero_head = zero_head
         self.classifier = classifier
         self.pretrained_path = pretrained_path
-        patches_size = (patch_size, patch_size)
+        patches_size_ = (patch_size_, patch_size_)
         self.transformer = Transformer(
             img_size,
             hidden_size,
             in_channels,
             patches_grid,
-            patches_size,
+            patches_size_,
             resnet_num_layers,
             resnet_width_factor,
             dropout_rate,
