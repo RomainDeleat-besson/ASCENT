@@ -2,8 +2,8 @@ _target_: ascent.models.components.transunet.VisionTransformer
 img_size: [128,128]
 in_channels: 1
 num_classes: 4
-patch_size_: 8
-patches_grid: [8, 8]
+patch_size_: 4
+patches_grid: [2, 2]
 hidden_size: 768
 resnet_num_layers: [3, 4, 9]
 resnet_width_factor: 1
@@ -20,3 +20,4 @@ decoder_channels: [256, 128, 64, 16]
 zero_head: False
 vis: False
 pretrained_path: "/home/deleat/Documents/RomainD/Working_space/NN_models/training_LLDM_v2/training_transUnet/R50+ViT-B_16.npz"
+deep_supervision: False

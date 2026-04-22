@@ -759,6 +759,7 @@ class SwinTransformerSys(nn.Module):
         patch_norm=True,
         use_checkpoint=False,
         final_upsample="expand_first",
+        deep_supervision=False,
         **kwargs,
     ):
         super().__init__()
@@ -768,10 +769,9 @@ class SwinTransformerSys(nn.Module):
                 depths, depths_decoder, drop_path_rate, num_classes
             )
         )
-        
-        self.patch_size = [img_size, img_size]
+        self.img_size = [img_size, img_size]
         self.in_channels = in_channels
-        self.deep_supervision = False
+        self.deep_supervision = deep_supervision
 
         self.num_classes = num_classes
         self.num_layers = len(depths)

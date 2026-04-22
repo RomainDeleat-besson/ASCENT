@@ -91,8 +91,8 @@ class SwinUNetLitModule(LightningModule):
 
     def setup(self, stage: Optional[str] = None) -> None:  # noqa: D102
         # to initialize some class variables that depend on the model
-        self.threeD = len(self.net.patch_size) == 3
-        self.patch_size = list(self.net.patch_size)
+        self.threeD = len(self.net.img_size) == 3
+        self.patch_size = list(self.net.img_size)
         self.num_classes = self.net.num_classes
 
         # create a dummy input to display model summary

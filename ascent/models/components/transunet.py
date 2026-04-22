@@ -1032,15 +1032,16 @@ class VisionTransformer(nn.Module):
         zero_head=False,
         vis=False,
         pretrained_path="../pretrained/R50+ViT-B_16.npz",
+        deep_supervision=False,
         **kwargs,
     ):
         super().__init__()
 
-        self.patch_size = img_size
+
+
+        self.img_size = img_size
         self.in_channels = in_channels
-        self.deep_supervision = False
-
-
+        self.deep_supervision = deep_supervision
         self.num_classes = num_classes
         self.zero_head = zero_head
         self.classifier = classifier

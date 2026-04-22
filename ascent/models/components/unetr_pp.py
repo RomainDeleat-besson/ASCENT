@@ -758,12 +758,9 @@ class UNETR_PP(nn.Module):
         assert len(feature_size_multiplier) == len(depths) == len(kernel_size) == 4
         assert len(patch_size_) == len(proj_feat_size)
 
-        self.patch_size = kwargs["patch_size"]
-        self.in_channels = in_channels
-        # self.deep_supervision = False
-
         self.in_channels = in_channels
         self.num_classes = num_classes
+        self.img_size = patch_size_
 
         self.proj_feat_size = proj_feat_size
         self.hidden_feature_size = (
