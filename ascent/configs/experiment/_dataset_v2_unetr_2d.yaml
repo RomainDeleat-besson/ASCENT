@@ -1,0 +1,22 @@
+# @package _global_
+
+defaults:
+  - override /datamodule: _dataset_v2_nnunet_2d
+  - override /model: _dataset_v2_unetr_2d
+  - override /callbacks: nnunet
+  - override /logger: wandb
+  - override /trainer: nnunet
+  - override /hydra: nnunet
+
+tags: ["${model.name}_${nnUNet_variant}", "Fold${fold}"]
+task_name: "_dataset_v2_unetr"
+fold: 0
+train: True
+test: False
+nnUNet_variant: 2D
+best_model: False
+logger:
+  wandb:
+    project: "${task_name}"
+    name: "${model.name}_${nnUNet_variant}"
+    tags: ["Fold${fold}"]

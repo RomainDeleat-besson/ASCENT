@@ -722,7 +722,7 @@ class UNETR_PP(nn.Module):
         self,
         in_channels: int,
         num_classes: int,
-        patch_size: Union[list[int], tuple[int, ...]],
+        patch_size_: Union[list[int], tuple[int, ...]],
         feature_size: int,
         feature_size_multiplier: Union[list[int], tuple[int, ...]],
         depths: Union[list[int], tuple[int, ...]],
@@ -734,6 +734,7 @@ class UNETR_PP(nn.Module):
         norm_name: Union[Tuple, str] = "instance",
         dropout_rate: float = 0.0,
         deep_supervision=True,
+        **kwargs,
     ) -> None:
         """
         Args:
@@ -755,7 +756,12 @@ class UNETR_PP(nn.Module):
 
         super().__init__()
         assert len(feature_size_multiplier) == len(depths) == len(kernel_size) == 4
-        assert len(patch_size) == len(proj_feat_size)
+        assert len(patch_size_) == len(proj_feat_size)
+
+        self.patch_size = kwargs["patch_size"]
+        self.in_channels = in_channels
+        # self.deep_supervision = False
+
         self.in_channels = in_channels
         self.num_classes = num_classes
 
@@ -767,7 +773,7 @@ class UNETR_PP(nn.Module):
             feature_size * multiplier for multiplier in feature_size_multiplier
         ]  # feature size at each level of our model
 
-        self.spatial_dims = len(patch_size)
+        self.spatial_dims = len(patch_size_)
 
         if pos_embed not in ["conv", "perceptron"]:
             raise KeyError(f"Position embedding layer of type {pos_embed} is not supported.")
@@ -782,7 +788,7 @@ class UNETR_PP(nn.Module):
         kernel_size_decoder4 = kernel_size[2]
         kernel_size_decoder5 = kernel_size[3]
 
-        out_size_decoder2 = multiply_value_in(patch_size)
+        out_size_decoder2 = multiply_value_in(patch_size_)
         out_size_decoder3 = out_size_decoder2 // (multiply_value_in(kernel_size_decoder2))
         out_size_decoder4 = out_size_decoder3 // (multiply_value_in(kernel_size_decoder3))
         out_size_decoder5 = out_size_decoder4 // (multiply_value_in(kernel_size_decoder4))

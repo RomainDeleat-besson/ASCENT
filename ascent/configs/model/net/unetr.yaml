@@ -1,0 +1,15 @@
+_target_: ascent.models.components.unetr_pp.UNETR_PP
+in_channels: 1
+num_classes: 4
+patch_size_: [128, 128]
+feature_size: 64
+feature_size_multiplier: [1, 2, 4, 8]
+depths: [3, 3, 3, 3]
+kernel_size: [[2, 2], [2, 2], [2, 2], [2, 2]]
+stride: [[2, 2], [2, 2], [2, 2], [2, 2]]
+proj_feat_size: [8, 8]
+num_heads: 4
+pos_embed: perceptron
+norm_name: instance
+dropout_rate: 0.1
+deep_supervision: True
