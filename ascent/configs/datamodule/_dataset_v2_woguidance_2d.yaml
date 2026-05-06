@@ -3,6 +3,6 @@ defaults:
   - override augmentation: default_2d
 
 batch_size: 190
-dataset_name: _dataset_v2_nnUnet_woGuidance
+dataset_name: _dataset_v2_woGuidance
 do_dummy_2D_data_aug: False
 num_workers: 12

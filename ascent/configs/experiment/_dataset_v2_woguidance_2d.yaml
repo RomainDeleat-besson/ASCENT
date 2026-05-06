@@ -1,15 +1,15 @@
 # @package _global_
 
 defaults:
-  - override /datamodule: _dataset_v2_nnunet_woguidance_2d
-  - override /model: _dataset_v2_nnunet_woguidance_2d
+  - override /datamodule: _dataset_v2_woGuidance_2d
+  - override /model: _dataset_v2_woGuidance_2d
   - override /callbacks: nnunet
   - override /logger: wandb
   - override /trainer: nnunet
   - override /hydra: nnunet
 
 tags: ["${model.name}_${nnUNet_variant}", "Fold${fold}"]
-task_name: "_dataset_v2_nnUnet_woGuidance"
+task_name: "_dataset_v2_woGuidance"
 fold: 0
 train: True
 test: True
