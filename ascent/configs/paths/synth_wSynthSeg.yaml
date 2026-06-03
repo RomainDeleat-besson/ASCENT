@@ -1,8 +1,8 @@
 # path to data directory
-data_dir: "/home/deleat/Documents/RomainD/Working_space/Data/Data_LLDM_v2/_dataset_v2_synth"
+data_dir: "/home/deleat/Documents/RomainD/Working_space/Data/Data_LLDM_v2/_dataset_v2_synth_wSynthSeg"
 
 # path to logging directory
-log_dir: "/home/deleat/Documents/RomainD/Working_space/Figures_Resultats/Results_LLDM_v2/_experiences/dice_synth_img/"
+log_dir: "/home/deleat/Documents/RomainD/Working_space/Figures_Resultats/Results_LLDM_v2/_logs/"
 
 # path to output directory, created dynamically by hydra
 # path generation pattern is specified in `configs/hydra/default.yaml`
