@@ -65,7 +65,7 @@ class AscentTrainer(ABC):
         if cfg.get("transfer_training") and cfg.get("ckpt_path"):
             log.info(f"Loading weights from {cfg.ckpt_path}")
             model.load_state_dict(
-                torch.load(cfg.get("ckpt_path"), map_location=model.device)["state_dict"]
+                torch.load(cfg.get("ckpt_path"), map_location=model.device, weights_only=False)["state_dict"]
             )
 
         log.info("Instantiating callbacks...")
