@@ -1,0 +1,6 @@
+defaults:
+  - unetr
+
+net:
+  patch_size: [128, 128]
+

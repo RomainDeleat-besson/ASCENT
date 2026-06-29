@@ -1,0 +1,6 @@
+defaults:
+  - transunet
+
+net:
+  patch_size: [128, 128]
+
