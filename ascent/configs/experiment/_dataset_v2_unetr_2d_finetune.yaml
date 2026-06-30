@@ -1,0 +1,26 @@
+# @package _global_
+
+defaults:
+  - override /datamodule: _dataset_v2_nnunet_2d
+  - override /model: _dataset_v2_unetr_2d
+  - override /callbacks: nnunet
+  - override /logger: wandb
+  - override /trainer: nnunet
+  - override /hydra: nnunet
+
+tags: ["${model.name}_${nnUNet_variant}", "Fold${fold}"]
+task_name: "_dataset_v2_unetr"
+fold: 0
+train: True
+test: False
+nnUNet_variant: 2D
+best_model: False
+
+ckpt_path: "/home/deleat/Documents/RomainD/Working_space/NN_models/training_LLDM_v2/training_unetR/2026-06-29 08-46-56_wGuidance_wSynthSeg/UNetR/2D/Fold_0/runs/2026-06-29_08-47-20/checkpoints/best_epoch_773.ckpt"
+transfer_training: True
+
+logger:
+  wandb:
+    project: "${task_name}"
+    name: "${model.name}_${nnUNet_variant}"
+    tags: ["Fold${fold}"]
